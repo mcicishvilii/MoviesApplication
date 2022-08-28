@@ -59,6 +59,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                             Log.d("tag", "error ${it.error}")
                         }
                         is Loading -> {
+
                             Log.d("tag", "loading")
                         }
                     }
@@ -66,8 +67,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
         }
     }
-
-
 
     private fun loginWithUser(){
         val email = binding.etUsername.text.toString()
