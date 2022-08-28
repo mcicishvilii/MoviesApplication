@@ -79,7 +79,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     withContext(Dispatchers.Main){
                         checkLoggedInState()
                         findNavController().navigate(R.id.action_loginFragment_to_moviesListFragment)
-                        Toast.makeText(requireContext(),"logged in dear ${auth.currentUser}!", Toast.LENGTH_SHORT).show()
                     }
                 }catch (e:Exception){
                     withContext(Dispatchers.Main){
@@ -93,9 +92,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun checkLoggedInState() {
         val user = auth.currentUser
         if (user == null) {
-            binding.loginTitle.text = "notLoggedIn"
+            binding.loginTitle.text = getString(R.string.notloggedin)
         } else {
             binding.loginTitle.setTextColor(Color.RED)
+            binding.splashScreen.setImageResource(R.drawable.splashscreen)
         }
     }
 

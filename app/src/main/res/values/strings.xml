@@ -21,4 +21,5 @@
     <string name="rating">rating</string>
     <string name="count">count</string>
     <string name="popularity">popularity</string>
+    <string name="notloggedin">user is not logged in</string>
 </resources>
