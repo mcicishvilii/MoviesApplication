@@ -7,11 +7,29 @@
     android:background="#242A32">
 
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:text="@string/welcome"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/vv_video"
+        app:layout_constraintEnd_toEndOf="@+id/vv_video"
+        app:layout_constraintStart_toStartOf="@+id/vv_video"
+        app:layout_constraintTop_toTopOf="@+id/vv_video" />
+
     <VideoView
         android:id="@+id/vv_video"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="6dp" />
+        android:layout_width="400dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -29,10 +47,10 @@
         android:text="@string/register"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toStartOf="@+id/vv_video"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/vv_video"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vv_video" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
@@ -42,9 +60,10 @@
         android:background="@drawable/registerbutton"
         android:text="@string/login"
         android:textColor="@color/green"
-        app:layout_constraintBottom_toBottomOf="@+id/vv_video"
-        app:layout_constraintEnd_toStartOf="@+id/vv_video"
-        app:layout_constraintStart_toEndOf="@+id/vv_video"
-        app:layout_constraintTop_toBottomOf="@id/btn_register" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

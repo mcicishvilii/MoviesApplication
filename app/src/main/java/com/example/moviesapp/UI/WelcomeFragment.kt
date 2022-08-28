@@ -15,7 +15,7 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
         auth = FirebaseAuth.getInstance()
         checkLoggedInState()
 
-        var videoUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
+        var videoUrl = "https://imgur.com/f62iZZL.mp4"
         val uri: Uri = Uri.parse(videoUrl)
         binding.vvVideo.setVideoURI(uri)
         val mediaController = MediaController(requireContext())
