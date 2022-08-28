@@ -4,10 +4,10 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
-
+@Parcelize
 data class PopularResponse(
     val page:Int?,
-    val results: List<Result1>?){
+    val results: List<Result1>?):Parcelable{
     @Parcelize
     data class Result1(
         @Json (name = "id")
@@ -20,7 +20,14 @@ data class PopularResponse(
         val releaseDate: String?,
         val title: String?,
         @Json(name = "vote_count")
-        val voteCount: Int?
+        val voteCount: Int?,
+        @Json(name = "overview")
+        val overview: String?,
+        @Json(name = "backdrop_path")
+        val backdropPath: String?,
+        @Json(name = "vote_average")
+        val voteAverage: Double?,
+
     ):Parcelable
     }
 

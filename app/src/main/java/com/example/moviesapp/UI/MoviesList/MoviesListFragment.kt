@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +19,7 @@ import com.example.moviesapp.Adapters.MoviesAdapter
 import com.example.moviesapp.BaseFragment
 import com.example.moviesapp.R
 import com.example.moviesapp.databinding.FragmentMoviesListBinding
+import com.example.movieswatchlist.Models.Responses.PopularResponse
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
@@ -28,6 +32,11 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
     private val moviesAdapter: MoviesAdapter by lazy { MoviesAdapter() }
 
     override fun viewCreated() {
+
+
+
+
+
 
         auth = FirebaseAuth.getInstance()
         checkLoggedInState()
@@ -42,15 +51,23 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
     }
 
     override fun listeners() {
-//        moviesAdapter.apply {
-//            setOnItemClickListener{it,_->
-//                val action = MoviesListFragmentDirections.
-//                actionMoviesListFragmentToMoviesDetailsFragment(
-//                    it.originalTitle
-//                )
-//                findNavController().navigate(action)
-//            }
-//        }
+        moviesAdapter.apply {
+            setOnItemClickListener{item, _ ->
+                val bundle = bundleOf(
+                    "title" to item.originalTitle,
+                    "about" to item.overview,
+                    "largePoster" to item.backdropPath,
+                    "smallPoster" to item.posterPath,
+                    "voteAverage" to item.voteAverage,
+                    "voteCount" to item.voteCount,
+                    "releaseDate" to item.releaseDate
+                    )
+                findNavController().navigate(
+                    R.id.action_moviesListFragment_to_moviesDetailsFragment,
+                    bundle
+                )
+            }
+        }
     }
 
     private fun setupRecycler() {

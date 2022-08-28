@@ -45,7 +45,7 @@ class MoviesAdapter: PagingDataAdapter<PopularResponse.Result1, MoviesAdapter.Mo
 
 
             binding.tvMovieName.setOnClickListener {
-                itemClickListener.invoke(model!!, bindingAdapterPosition)
+                itemClickListener.invoke(model!!, absoluteAdapterPosition)
             }
         }
     }

@@ -54,11 +54,5 @@
         android:id="@+id/moviesDetailsFragment"
         android:name="com.example.moviesapp.UI.MoviesDetails.MoviesDetailsFragment"
         android:label="fragment_movies_details"
-        tools:layout="@layout/fragment_movies_details" >
-        <argument
-            android:name="movieInfo"
-            app:argType="com.example.movieswatchlist.Models.Responses.PopularResponse$Result1"
-            app:nullable="true"
-            android:defaultValue="@null" />
-    </fragment>
+        tools:layout="@layout/fragment_movies_details" />
 </navigation>

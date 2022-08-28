@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.43854166666666666" />
-        <entry key="app/src/main/res/layout/fragment_movies_details.xml" value="0.43854166666666666" />
+        <entry key="app/src/main/res/layout/fragment_movies_details.xml" value="0.18816067653276955" />
         <entry key="app/src/main/res/layout/fragment_movies_list.xml" value="0.43854166666666666" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.43854166666666666" />
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.43854166666666666" />
