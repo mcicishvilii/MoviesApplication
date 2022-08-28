@@ -1,4 +1,4 @@
-package com.example.moviesapp
+package com.example.moviesapp.UI.Register
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,25 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.moviesapp.R
 
-class MoviesListFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MoviesListFragment()
+        fun newInstance() = RegisterFragment()
     }
 
-    private lateinit var viewModel: MoviesListViewModel
+    private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_movies_list, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoviesListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

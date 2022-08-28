@@ -1,13 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoviesDetailsFragment">
+    android:background="#242A32">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        >
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMovieName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="@string/movie_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ivSmallPoster"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSmallPoster"
+            android:layout_width="100dp"
+            android:layout_height="160dp"
+            android:elevation="1dp"
+            android:layout_marginTop="-80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvMovieName"
+            app:layout_constraintTop_toBottomOf="@id/ivLargePoster"
+            android:src="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLargePoster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/iv_aboutMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_movie"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/ivSmallPoster"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="30dp"
+            android:textSize="30sp"
+            android:layout_marginTop="30dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMovieDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:text=""
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_aboutMovie" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReleaseDateDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            app:layout_goneMarginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/release_year"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieDescription" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAverageRatingDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            app:layout_goneMarginTop="30dp"
+            android:text="@string/rating"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReleaseDateDetails" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRateCountDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            app:layout_goneMarginTop="30dp"
+            android:text="@string/count"
+            android:layout_marginStart="200dp"
+            app:layout_constraintStart_toStartOf="@id/tvAverageRatingDetails"
+            app:layout_constraintTop_toBottomOf="@id/tvReleaseDateDetails" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_watchlist"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toEndOf="@+id/tvRateCountDetails"
+            app:layout_constraintTop_toTopOf="@+id/tvRateCountDetails"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRateCountDetails"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAveragePopularityDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            app:layout_goneMarginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/popularity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAverageRatingDetails" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
