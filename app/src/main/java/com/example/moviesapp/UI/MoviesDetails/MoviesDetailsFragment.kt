@@ -1,5 +1,6 @@
 package com.example.moviesapp.UI.MoviesDetails
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -22,13 +23,17 @@ import com.google.firebase.ktx.Firebase
 
 class MoviesDetailsFragment : BaseFragment<FragmentMoviesDetailsBinding>(FragmentMoviesDetailsBinding::inflate) {
 
+
+
+    @SuppressLint("SetTextI18n")
     override fun viewCreated() {
         binding.tvMovieName.text = arguments?.getString("title")
-        binding.tvAverageRatingDetails.text = arguments?.getDouble("voteAverage").toString()
+        binding.tvAverageRatingDetails.text = "Avarage Rating: " + arguments?.getDouble("voteAverage").toString()
         binding.ivAboutMovie.text = arguments?.getString("about")
-        binding.tvReleaseDateDetails.text = arguments?.getString("releaseDate")
-        binding.tvRateCountDetails.text = arguments?.getInt("voteCount").toString()
-        binding.tvAveragePopularityDetails.text = arguments?.getDouble("popular").toString()
+        binding.tvReleaseDateDetails.text = "Release Date: " + arguments?.getString("releaseDate")
+        binding.tvRateCountDetails.text = "Total votes count: " + arguments?.getInt("voteCount").toString()
+        binding.tvAveragePopularityDetails.text = "Average Populairty: " + arguments?.getDouble("popular").toString()
+
         Glide.with(requireContext())
             .load("https://image.tmdb.org/t/p/w500${arguments?.getString("largePoster")}")
             .into(binding.ivLargePoster)
@@ -37,6 +42,7 @@ class MoviesDetailsFragment : BaseFragment<FragmentMoviesDetailsBinding>(Fragmen
             .into(binding.ivSmallPoster)
 
     }
+
 
     override fun listeners() {
 
