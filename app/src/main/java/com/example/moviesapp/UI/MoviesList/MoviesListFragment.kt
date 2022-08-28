@@ -6,27 +6,79 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moviesapp.Adapters.MoviesAdapter
+import com.example.moviesapp.BaseFragment
 import com.example.moviesapp.R
+import com.example.moviesapp.databinding.FragmentMoviesListBinding
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
-class MoviesListFragment : Fragment() {
+class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMoviesListBinding::inflate) {
 
-    companion object {
-        fun newInstance() = MoviesListFragment()
+
+    private lateinit var auth: FirebaseAuth
+
+    private val moviesListViewModel: MoviesListViewModel by viewModels()
+    private val moviesAdapter: MoviesAdapter by lazy { MoviesAdapter() }
+
+    override fun viewCreated() {
+
+        auth = FirebaseAuth.getInstance()
+        checkLoggedInState()
+        setupRecycler()
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                moviesListViewModel.userPager.collect{
+                    moviesAdapter.submitData(it)
+                }
+            }
+        }
     }
 
-    private lateinit var viewModel: MoviesListViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_movies_list, container, false)
+    override fun listeners() {
+//        moviesAdapter.apply {
+//            setOnItemClickListener{it,_->
+//                val action = MoviesListFragmentDirections.
+//                actionMoviesListFragmentToMoviesDetailsFragment(
+//                    it.originalTitle
+//                )
+//                findNavController().navigate(action)
+//            }
+//        }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoviesListViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun setupRecycler() {
+        binding.rvMovies.apply {
+            adapter = moviesAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(),
+                    LinearLayoutManager.VERTICAL,
+                    false)
+
+        }
     }
+
+    private fun checkLoggedInState() {
+        val user = auth.currentUser
+        if (user == null) {
+            binding.tvFindYourMovie.text = "notLoggedIn"
+        } else {
+            binding.tvFindYourMovie.text = user.email
+            binding.btnLogOut.setOnClickListener{
+                auth.signOut()
+                findNavController().navigate(R.id.action_moviesListFragment_to_welcomeFragment)
+            }
+        }
+    }
+
+
+
+
 
 }

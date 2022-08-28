@@ -1,4 +1,4 @@
-package com.example.moviesapp.Models
+package com.example.movieswatchlist.Models.Responses
 
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json

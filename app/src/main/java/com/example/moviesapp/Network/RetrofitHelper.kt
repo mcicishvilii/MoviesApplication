@@ -20,4 +20,8 @@ object RetrofitHelper {
         RetrofitBuilder.create(LoginApi::class.java)
     }
 
+    val popularsService by lazy {
+        RetrofitBuilder.create(PopularsApi::class.java)
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.example.moviesapp.Network
 
-import com.example.moviesapp.Models.TokenResponse
 import com.example.moviesapp.Models.UserModel
+import com.example.movieswatchlist.Models.Responses.TokenResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

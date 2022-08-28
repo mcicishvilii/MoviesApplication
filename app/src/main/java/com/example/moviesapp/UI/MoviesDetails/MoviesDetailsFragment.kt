@@ -6,27 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.moviesapp.BaseFragment
 import com.example.moviesapp.R
+import com.example.moviesapp.databinding.FragmentMoviesDetailsBinding
 
-class MoviesDetailsFragment : Fragment() {
+class MoviesDetailsFragment : BaseFragment<FragmentMoviesDetailsBinding>(FragmentMoviesDetailsBinding::inflate) {
 
-    companion object {
-        fun newInstance() = MoviesDetailsFragment()
+//    val args:MoviesDetailsFragmentArgs by navArgs()
+
+    override fun viewCreated() {
+//        val mishoargs = args.movieInfo
+//        binding.tvMovieName.text = mishoargs
     }
 
-    private lateinit var viewModel: MoviesDetailsViewModel
+    override fun listeners() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_movies_details, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoviesDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
