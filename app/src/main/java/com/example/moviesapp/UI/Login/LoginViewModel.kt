@@ -14,20 +14,12 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-
-    private var _loginState = MutableStateFlow("")
-    var loginState = _loginState.asStateFlow()
-
     val apiKeyXelit = "acdbc7ef61877f0d6b3e29d062218ccc"
+    private var token = ""
 
-
-
-
-    private var tokeni = ""
-    private var session = ""
     init {
         viewModelScope.launch {
-            tokeni = tokenResponse(apiKeyXelit)
+            token = tokenResponse(apiKeyXelit)
         }
     }
 

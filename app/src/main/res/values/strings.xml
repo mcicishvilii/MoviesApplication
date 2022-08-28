@@ -11,7 +11,7 @@
     <string name="log_in_with_tmdb">log in with tmdb</string>
     <string name="login_in_with_firebase">login in with firebase</string>
     <string name="categories">categories</string>
-    <string name="movie_db_app">movie db app</string>
+    <string name="movie_db_app">Movies</string>
     <string name="find_your_movies">find your movies</string>
     <string name="log_out">Log Out</string>
     <string name="search_here">search here</string>

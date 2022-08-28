@@ -2,10 +2,13 @@ package com.example.moviesapp.UI.MoviesList
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
@@ -17,13 +20,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapp.Adapters.MoviesAdapter
 import com.example.moviesapp.BaseFragment
+import com.example.moviesapp.Models.UserModel
 import com.example.moviesapp.R
+import com.example.moviesapp.Resource
 import com.example.moviesapp.databinding.FragmentMoviesListBinding
 import com.example.movieswatchlist.Models.Responses.PopularResponse
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMoviesListBinding::inflate) {
+class MoviesListFragment :
+    BaseFragment<FragmentMoviesListBinding>(FragmentMoviesListBinding::inflate) {
 
 
     private lateinit var auth: FirebaseAuth
@@ -32,18 +39,12 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
     private val moviesAdapter: MoviesAdapter by lazy { MoviesAdapter() }
 
     override fun viewCreated() {
-
-
-
-
-
-
         auth = FirebaseAuth.getInstance()
         checkLoggedInState()
         setupRecycler()
-        viewLifecycleOwner.lifecycleScope.launch{
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
-                moviesListViewModel.userPager.collect{
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                moviesListViewModel.userPager.collect {
                     moviesAdapter.submitData(it)
                 }
             }
@@ -52,7 +53,7 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
 
     override fun listeners() {
         moviesAdapter.apply {
-            setOnItemClickListener{item, _ ->
+            setOnItemClickListener { item, _ ->
                 val bundle = bundleOf(
                     "title" to item.originalTitle,
                     "about" to item.overview,
@@ -60,8 +61,9 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
                     "smallPoster" to item.posterPath,
                     "voteAverage" to item.voteAverage,
                     "voteCount" to item.voteCount,
-                    "releaseDate" to item.releaseDate
-                    )
+                    "releaseDate" to item.releaseDate,
+                    "popular" to item.popularity
+                )
                 findNavController().navigate(
                     R.id.action_moviesListFragment_to_moviesDetailsFragment,
                     bundle
@@ -77,7 +79,6 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
                 LinearLayoutManager(requireContext(),
                     LinearLayoutManager.VERTICAL,
                     false)
-
         }
     }
 
@@ -87,14 +88,12 @@ class MoviesListFragment : BaseFragment<FragmentMoviesListBinding>(FragmentMovie
             binding.tvFindYourMovie.text = "notLoggedIn"
         } else {
             binding.tvFindYourMovie.text = user.email
-            binding.btnLogOut.setOnClickListener{
+            binding.btnLogOut.setOnClickListener {
                 auth.signOut()
                 findNavController().navigate(R.id.action_moviesListFragment_to_welcomeFragment)
             }
         }
     }
-
-
 
 
 

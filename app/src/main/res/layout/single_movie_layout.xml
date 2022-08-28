@@ -3,80 +3,91 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:background="#242A32"
-    android:layout_height="wrap_content">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/startGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+    android:layout_height="wrap_content"
+    tools:background="#242A32">
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/endGuideline"
+        android:id="@+id/rightGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tvGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.73" />
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivImagePoster"
-        android:layout_width="95dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="170dp"
-        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        android:layout_width="140dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvMovieName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="3dp"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@id/ivImagePoster"
-        app:layout_constraintTop_toTopOf="@id/ivImagePoster"
+        app:layout_constraintBottom_toTopOf="@+id/tvReleaseDate"
+        app:layout_constraintEnd_toStartOf="@+id/tvGuideline"
+        app:layout_constraintStart_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Die hard" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAverageRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="3dp"
         android:textColor="@color/white"
         android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@id/ivImagePoster"
-        app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
         tools:text="Die hard" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvGuideline"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="20dp"
         tools:text="9.5" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvReleaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="3dp"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/ivImagePoster"
-        app:layout_constraintTop_toBottomOf="@id/tvMovieName"
+        app:layout_constraintBottom_toTopOf="@+id/tvAverageRating"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovieName"
         tools:text="Die hard" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

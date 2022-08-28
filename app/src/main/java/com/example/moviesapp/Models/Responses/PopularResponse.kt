@@ -27,6 +27,7 @@ data class PopularResponse(
         val backdropPath: String?,
         @Json(name = "vote_average")
         val voteAverage: Double?,
+        val popularity: Double?,
 
     ):Parcelable
     }

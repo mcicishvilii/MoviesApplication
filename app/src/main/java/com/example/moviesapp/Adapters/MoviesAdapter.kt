@@ -35,9 +35,10 @@ class MoviesAdapter: PagingDataAdapter<PopularResponse.Result1, MoviesAdapter.Mo
             model = getItem(bindingAdapterPosition)
             binding.apply {
                 tvMovieName.text = model?.originalTitle.toString()
-                tvAverageRating.text = model?.voteCount.toString()
-                tvRating.text = model?.voteCount.toString()
+                tvAverageRating.text = "Average votes: ${model?.voteAverage.toString()}"
+                tvRating.text = "Rating: ${model?.voteCount.toString()}"
                 tvReleaseDate.text = model?.releaseDate.toString()
+
                 Glide.with(this.ivImagePoster)
                     .load("https://image.tmdb.org/t/p/w500${model?.posterPath}")
                     .into(ivImagePoster)
