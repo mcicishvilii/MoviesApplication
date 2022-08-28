@@ -13,9 +13,8 @@
         android:text="@string/movie_db_app"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_findYourMovie"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogOut"
+        app:layout_constraintBottom_toTopOf="@+id/rvMovies"
+        app:layout_constraintEnd_toStartOf="@+id/tv_findYourMovie"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,44 +24,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/log_out"
-        android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_findYourMovie"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvTitle"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/rvMovies"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_findYourMovie" />
+        app:layout_constraintTop_toBottomOf="@+id/rvMovies" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_findYourMovie"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:text="@string/find_your_movies"
-        app:layout_constraintBottom_toTopOf="@+id/sv_search"
+        app:layout_constraintBottom_toTopOf="@+id/rvMovies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMovies"
+        android:elevation="-10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogOut"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMovies"
-        android:layout_width="match_parent"
-        android:layout_height="645dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_search" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

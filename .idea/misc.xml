@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/loginbutton.xml" value="0.386" />
+        <entry key="app/src/main/res/drawable/photoLayout.xml" value="0.207" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.43854166666666666" />
         <entry key="app/src/main/res/layout/fragment_movies_details.xml" value="0.47536313014605075" />
