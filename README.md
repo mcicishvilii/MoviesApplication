@@ -9,7 +9,13 @@ implements viewModel, model, and View layers. (repository is under production)
 
 application lets you scroll through the popular movies based on the public api. 
 
-also it lets you register and login to it with your e-mail.
+App lets you register and login to it with your e-mail.
+
+User can check whether the movie has a good or bad ratings, is popular or not among the viewers.
+
+User can also press on a movie name from the list and get additional details about it.
+
+
 
 ![301524019_5543871879008522_6738915900048593934_n](https://user-images.githubusercontent.com/83747561/187094256-835a60b5-29d1-4fb5-b933-200d3a1e5f13.png)
 ![301593981_768126634423128_2119571644272890586_n](https://user-images.githubusercontent.com/83747561/187094259-51810dad-78d2-44bf-ba71-9dcd50745236.png)
