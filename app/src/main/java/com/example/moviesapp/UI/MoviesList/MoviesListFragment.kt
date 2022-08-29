@@ -32,7 +32,6 @@ import kotlinx.coroutines.launch
 class MoviesListFragment :
     BaseFragment<FragmentMoviesListBinding>(FragmentMoviesListBinding::inflate) {
 
-
     private lateinit var auth: FirebaseAuth
 
     private val moviesListViewModel: MoviesListViewModel by viewModels()

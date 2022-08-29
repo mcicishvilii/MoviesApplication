@@ -28,8 +28,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun viewCreated() {
         auth = FirebaseAuth.getInstance()
 //        checkLoggedInState()
-        binding.etUsername.setText("mcicishvilii")
-        binding.etPassword.setText("Suckartwell0!")
+//        binding.etUsername.setText("mcicishvilii")
+//        binding.etPassword.setText("Suckartwell0!")
 
     }
 
@@ -95,7 +95,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             binding.loginTitle.text = getString(R.string.notloggedin)
         } else {
             binding.loginTitle.setTextColor(Color.RED)
-            binding.splashScreen.setImageResource(R.drawable.splashscreen)
+//            binding.splashScreen.setImageResource(R.drawable.splashscreen)
         }
     }
 

@@ -22,6 +22,7 @@ class MyPagingSource : PagingSource<Int, PopularResponse.Result1>() {
         return try {
             if (response.isSuccessful) {
                 val movies = response.body()
+                Log.d("tag", movies?.results.toString())
                 return LoadResult.Page((movies!!.results!!), prevPage, nextPage)
             } else {
                 LoadResult.Error(Throwable())
